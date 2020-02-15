@@ -7,6 +7,20 @@ namespace EFCoreEjemplos
     static void Main(string[] args)
     {
       Console.WriteLine("Hello World!");
+      //InsertEstudiante();
+
+    }
+
+    static void InsertEstudiante()
+    {
+      using (var context = new ApplicationDbContext())
+      {
+        var estudiante = new Estudiante();
+        estudiante.Nombre = "Bjorn";
+        context.Add(estudiante);
+        context.SaveChanges();
+      }
+
     }
   }
 
