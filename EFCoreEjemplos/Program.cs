@@ -10,7 +10,26 @@ namespace EFCoreEjemplos
       Console.WriteLine("Hello World!");
       //InsertEstudiante();
       //ReadEstudiante();
-      UpdateEstudiante();
+      //UpdateEstudiante();
+      UpdateEstudiantesWithoutConection();
+    }
+
+    static void UpdateEstudiantesWithoutConection()
+    {
+      Estudiante Bjorn;
+
+      using (var context = new ApplicationDbContext())
+      {
+        Bjorn = context.Estudiantes.Where(x => x.Nombre == "Bjorn Iron Side").FirstOrDefault();
+      }
+
+      Bjorn.Nombre += " Viking";
+
+      using (var context = new ApplicationDbContext())
+      {
+        context.Entry(Bjorn).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+        context.SaveChanges();
+      }
     }
 
     static void UpdateEstudiante()
