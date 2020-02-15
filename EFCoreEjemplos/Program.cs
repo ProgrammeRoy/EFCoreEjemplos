@@ -9,7 +9,18 @@ namespace EFCoreEjemplos
     {
       Console.WriteLine("Hello World!");
       //InsertEstudiante();
-      ReadEstudiante();
+      //ReadEstudiante();
+      UpdateEstudiante();
+    }
+
+    static void UpdateEstudiante()
+    {
+      using (var context = new ApplicationDbContext())
+      {
+        var estudiantes = context.Estudiantes.ToList();
+        estudiantes[0].Nombre += " Iron Side";
+        context.SaveChanges();  
+      }
     }
 
     static void ReadEstudiante()
