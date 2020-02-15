@@ -11,7 +11,18 @@ namespace EFCoreEjemplos
       //InsertEstudiante();
       //ReadEstudiante();
       //UpdateEstudiante();
-      UpdateEstudiantesWithoutConection();
+      //UpdateEstudiantesWithoutConection();
+      DeleteEstudiante();
+    }
+
+    static void DeleteEstudiante()
+    {
+      using (var context = new ApplicationDbContext())
+      {
+        var estudiante = context.Estudiantes.Where(x => x.Id == 1).FirstOrDefault();
+        context.Estudiantes.Remove(estudiante);
+        context.SaveChanges();
+      }
     }
 
     static void UpdateEstudiantesWithoutConection()
