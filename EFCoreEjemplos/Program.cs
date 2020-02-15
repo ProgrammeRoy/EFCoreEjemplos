@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace EFCoreEjemplos
 {
@@ -8,7 +9,16 @@ namespace EFCoreEjemplos
     {
       Console.WriteLine("Hello World!");
       //InsertEstudiante();
+      ReadEstudiante();
+    }
 
+    static void ReadEstudiante()
+    {
+      using (var context = new ApplicationDbContext())
+      {
+        //Add up "using System.Linq;"
+        var estudiantes = context.Estudiantes.ToList();
+      }
     }
 
     static void InsertEstudiante()
