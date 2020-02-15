@@ -10,7 +10,7 @@ namespace EFCoreEjemplos
     //Server
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-      optionsBuilder.UseSqlServer("Data Source = SQLSERVER; Initial Catalog=EFCore; Integrated Security=True");
+      optionsBuilder.UseSqlServer("Server=.\\SQLSERVER;user id=sa;password=Pa$$123;Database=EFCore");
     }
 
     //Table Sql
@@ -18,7 +18,10 @@ namespace EFCoreEjemplos
 
     //In Package Manager Console
 
-    //To prepare migration
-    //Add-Migration Initial
+      //To prepare migration
+      //Add-Migration Initial
+
+      //Create DataBase and update
+      //update-database
   }
 }
